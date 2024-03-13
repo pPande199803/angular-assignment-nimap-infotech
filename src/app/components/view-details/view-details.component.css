@@ -1,0 +1,59 @@
+.text{
+    font-size: 24px;
+}
+.container{
+    width: 70%;
+    margin-top: 20px;
+}
+
+.profile-row{
+    margin-top: 40px;
+}
+
+.profile-row #profile{
+    visibility: hidden;
+}
+.modal-btn{
+    visibility: hidden;
+}
+
+.profile-img input{
+    visibility: hidden;
+}
+.profile-img a{
+    display: flex;
+    justify-content: center;
+    margin-left: -35px;
+    color: blue;
+    text-decoration: none;
+}
+.profile-img a:hover{
+     text-decoration: underline;
+     color: darkblue;
+     cursor: pointer;
+}
+
+.agerange{
+    width: 76%;
+}
+.agerangeinputfiled{
+    width: 40px;
+    /* border: none; */
+}
+
+
+.show-tags{
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid gray;
+}
+.show-tags li{
+        text-decoration: none;
+        list-style: none;
+        background-color: lightgray;
+        width: fit-content;
+        padding: 10px;
+        border-radius: 5px;
+        margin-top: 5px;
+        cursor: pointer;
+}

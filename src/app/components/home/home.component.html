@@ -1,0 +1,263 @@
+<div class="contain">
+    <div class="background">
+        <div class="over-lay">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="#">DEMO APP</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+                            <form class="d-flex">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Jobs</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Clients</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Employees</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Contacts Us</a>
+                                    </li>
+                                </ul>
+                            </form>
+                        </div>
+                    </div>
+                </nav>
+                <div class="middle-part">
+                    <h1>I'm Looking For..</h1>
+                    <div class="search mt-4">
+                        <div class="search-input-box">
+                            <input type="text" class="form-control" placeholder="Enter a Job Description..">
+                        </div>
+                        <button class="btn btn-primary">Search</button>
+                    </div>
+                    <div class="form-check form-check-inline mt-4">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                        <label class="form-check-label" for="inlineCheckbox1">Full Time</label>
+                    </div>
+                    <div class="form-check form-check-inline mt-4">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                        <label class="form-check-label" for="inlineCheckbox2">Part Time /Casual / Freelancer</label>
+                    </div>
+                    <select name="" id="" class="mt-4">
+                        <option value="">Select Your Location</option>
+                    </select>
+                    <div class="register-button">
+                        <button class="btn btn-primary " data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">Register</button>
+                    </div>
+                </div>
+    
+                
+                
+                <div class="creative-setction">
+                    <div class="main">
+                        <div class="top-heading-one">
+                            <p>We're Leader In</p>
+                        </div>
+                        <div class="top-heading-two">
+                            <h1>Creative Digital Recuriment</h1>
+                        </div>
+                        <div class="top-heading-three">
+                            <p>Based in Surry Hills,the creative hub of sydney we are surrounded by creativity <br>
+                            and that reflects on the type of jobs we recruit for.</p>
+                        </div>
+                        <div class="top-heading-four">
+                            <button class="btn">FIND OUT MORE ABOUT US</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="subscription mt-4">
+                <div class="subscrip">
+                    <div class="sub-one">
+                        <p>Subscribe to our Job Seeker Mailing List</p>
+                    </div>
+                    <div class="sub-two">   
+                        <input type="text" class="form-control" placeholder="Enter Your Email Address">
+                    </div>
+                </div>
+            </div>
+            
+            <footer>
+                <div class="footer">
+                    <div class="input-footer">
+                        <i class="fa fa-envelope"></i>&nbsp;<input type="text">
+                    </div>
+                    <div class="footer-line">
+                        <p>Copyright © 2014 Two Bytes Consulting. <strong>Terms & Policies</strong></p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<!-- modal -->
+
+
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+  </button> -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Register</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+               <form [formGroup]="registerForm">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="profile-img">
+                            <img [src]="url" alt="" width="200px" height="200px">
+                            <span class="text-danger" *ngIf="f['imageUrl'].value ==''">Image Size Support In Range (310*325)px</span>
+                            <a (click)="uplaodProfilebutton()" class="mt-2"> Upload Image</a>
+                            <input type="file" id="file" (change)="onSelectFile($event)" formControlName="imageUrl">
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <!-- <label for="exampleFormControlInput1" class="form-label">Email address</label> -->
+                                    <input type="text" class="form-control" id="exampleFormControlInput1"
+                                        placeholder="First Name" formControlName="firstName" required>
+                                        <span class="text-danger" *ngIf="f['firstName'].invalid && (f['firstName'].dirty || f['firstName'].touched)">Enter First Name Here</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <!-- <label for="exampleFormControlInput1" class="form-label">Email address</label> -->
+                                    <input type="text" class="form-control" id="exampleFormControlInput1"
+                                        placeholder="Last Name"  formControlName="lastName" required>
+                                        <span class="text-danger" *ngIf="f['lastName'].invalid && (f['lastName'].dirty || f['lastName'].touched)">Enter Last Name Here</span>
+                                </div>
+                            </div>
+                        </div>
+                       
+                        <div class="mb-3">
+                            <!-- <label for="exampleFormControlInput1" class="form-label">Email address</label> -->
+                            <input type="email" class="form-control"
+                                placeholder="Email"  formControlName="emailId" required>
+                                <span class="text-danger" *ngIf="f['emailId'].invalid && (f['emailId'].dirty || f['emailId'].touched)">Enter Email Here</span>
+                        </div>
+                        <div class="mb-3">
+                            <!-- <label for="exampleFormControlInput1" class="form-label">Email address</label> -->
+                            <input type="number" class="form-control" 
+                                placeholder="(+123) 12321-3213 "  formControlName="mobileNumber" required>
+                                <span class="text-danger" *ngIf="f['mobileNumber'].invalid && (f['mobileNumber'].dirty || f['mobileNumber'].touched)">Enter Mobile Number Here</span>
+                        </div>
+                        <div class="age">
+                            <p>
+                                <label>Age</label>
+                               20<input type="range" min="20" max="60" step="1" class="agerange" (input)="changeRange($event.target,rangeInput1)" #range1 formControlName="age">60
+                                <input type="number" min="20" max="60" (input) = "changeRange($event.target, range1)" #rangeInput1 value="20" class="agerangeinputfiled">
+                              </p>
+                        </div>
+                        <div class="mb-3">
+                            <!-- <label for="exampleFormControlInput1" class="form-label">Email address</label> -->
+                            <input type="text" class="form-control"
+                                placeholder="State" formControlName="state" required>
+                                <span class="text-danger" *ngIf="f['state'].invalid && (f['state'].dirty || f['state'].touched)">Enter State Here</span>
+                        </div>
+                        <div class="mb-3">
+                            <!-- <label for="exampleFormControlInput1" class="form-label">Email address</label> -->
+                            <input type="text" class="form-control"
+                                placeholder="Country" formControlName="country" required> 
+                                <span class="text-danger" *ngIf="f['country'].invalid && (f['country'].dirty || f['country'].touched)">Enter Country Here</span>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Address</label>
+                            <select class="form-control" (change)="selectAddress($event.target)">
+                                <option value="" [defaultSelected]>Select Address</option>
+                                <option value="home">Home</option>
+                                <option value="company">Company</option>
+                            </select>
+                          
+                        </div>
+    
+                        <div class="home" *ngIf="addressShow">
+                            <div class="mb-3">
+                                <label  class="form-label">Address 1</label>
+                                <input type="text" class="form-control"
+                                    placeholder="address1" formControlName="address1">
+                            </div>
+                            <div class="mb-3">
+                                <label  class="form-label">Address2</label>
+                                <input type="text" class="form-control"
+                                    placeholder="address2" formControlName="address2">
+                            </div>
+                        </div>
+    
+    
+                        <div class="company" *ngIf="companyAddressShow">
+                            <div class="mb-3">
+                                <label  class="form-label">Company Address 1</label>
+                                <input type="text" class="form-control" 
+                                    placeholder="companyAddress1" formControlName="companyAddress1">
+                            </div>
+                            <div class="mb-3">
+                                <label  class="form-label">Company Address2</label>
+                                <input type="text" class="form-control" 
+                                    placeholder="companyAddress2" formControlName="companyAddress1">
+                            </div>
+                        </div>
+    
+    
+    
+                        <div class="mb-3">
+                            <label class="form-label">Tags</label>
+                            <input type="text" class="form-control"
+                                placeholder="tags" name="tags" #tags (input)="addTags(tags.value)" (keypress)="select($event,tags)">
+    
+                            <div class="show-tags">
+                                <ul *ngFor="let data of allTags; let i = index">
+                                    <li>{{data.name}} &nbsp;<i class="fa fa-close" (click)="removeTags(i)"></i></li>
+                                </ul>
+                            </div>
+                            <div class="form-check mt-2">
+                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" formControlName="subscribe">
+                                <label class="form-check-label" for="defaultCheck1">
+                                  subscribe to newsletter
+                                </label>
+                            </div>
+    
+                        </div>
+                    </div>
+                </div>
+               </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close">Cancel</button>
+                <button type="button" class="btn btn-primary" (click)="postRegisterData()" [disabled]="!registerForm.valid">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>

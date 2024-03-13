@@ -1,0 +1,177 @@
+
+<div class="container">
+    <h1>Profile</h1>
+   <div class="row profile-row " *ngFor="let data of allRegisterData">
+    <div class="col-md-6">
+        <img src="{{data.imageUrl}}" alt="" width="250px" height="250px" >
+        <div class="button-set mt-2 mx-3">
+            <button class="btn btn-warning"(click)="profileImageUpdate(data)">Edit Photo</button>
+            <button class="btn btn-warning mx-4" (click)="openEditModal(data)">Edit Profile</button>
+            <input type="file" id="profile" (change)="onSelectprofileImage($event, data)" >
+        </div>
+    </div>
+    <div class="col-md-6">
+        <span class="text"><p>I'm {{data.firstName}} {{data.lastName}} and I'm above {{data.age}} years and you can send 
+            your email to {{data.emailId}}. I live in the state of {{data.state}}.
+            I like to play <a *ngFor="let data of data.tags">{{data.name}},&nbsp;</a>.And please send me newsletter. 
+                Please reach out to me on my phone number</p></span>
+
+                <div class="iagree">
+                    <button class="btn btn-success" (click)="iagree()">I Agree</button>
+                </div>
+    </div>
+   </div>
+</div>
+
+
+
+
+<!-- model -->
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary modal-btn" data-bs-toggle="modal" data-bs-target="#exampleModal" id="modalOpen">
+    Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Register</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+               <form [formGroup]="registerForm">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="profile-img">
+                            <img src="{{url}}" alt="" width="200px" height="200px" *ngIf="registerForm.value.imageUrl !== ''" >
+                            <img src="{{imageUrl}}" alt="" width="200px" height="200px" *ngIf="registerForm.value.imageUrl == ''">
+                            <!-- <span class="text-danger" *ngIf="f['imageUrl'].value ==''">Image Size Support In Range (310*325)px</span> -->
+                            <a (click)="uplaodProfilebutton()" class="mt-2"> Upload Image</a>
+                            <input type="file" id="file" (change)="onSelectFile($event)" formControlName="imageUrl">
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <!-- <label for="exampleFormControlInput1" class="form-label">Email address</label> -->
+                                    <input type="text" class="form-control" id="exampleFormControlInput1"
+                                        placeholder="First Name" formControlName="firstName" value="firstName" required>
+                                        <!-- <span class="text-danger" *ngIf="f['firstName'].invalid && (f['firstName'].dirty || f['firstName'].touched)">Enter First Name Here</span> -->
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <!-- <label for="exampleFormControlInput1" class="form-label">Email address</label> -->
+                                    <input type="text" class="form-control" id="exampleFormControlInput1"
+                                        placeholder="Last Name"  formControlName="lastName" value="lastName" required>
+                                        <!-- <span class="text-danger" *ngIf="f['lastName'].invalid && (f['lastName'].dirty || f['lastName'].touched)">Enter Last Name Here</span> -->
+                                </div>
+                            </div>
+                        </div>
+                       
+                        <div class="mb-3">
+                            <!-- <label for="exampleFormControlInput1" class="form-label">Email address</label> -->
+                            <input type="email" class="form-control"
+                                placeholder="Email"  formControlName="emailId" value="emailId" required>
+                                <!-- <span class="text-danger" *ngIf="f['emailId'].invalid && (f['emailId'].dirty || f['emailId'].touched)">Enter Email Here</span> -->
+                        </div>
+                        <div class="mb-3">
+                            <!-- <label for="exampleFormControlInput1" class="form-label">Email address</label> -->
+                            <input type="number" class="form-control" 
+                                placeholder="(+123) 12321-3213 "  formControlName="mobileNumber" value="mobileNumber" required>
+                                <!-- <span class="text-danger" *ngIf="f['mobileNumber'].invalid && (f['mobileNumber'].dirty || f['mobileNumber'].touched)">Enter Mobile Number Here</span> -->
+                        </div>
+                        <div class="age">
+                            <p>
+                                <label>Age</label>
+                               20<input type="range" min="20" max="60" step="1" class="agerange" (input)="changeRange($event.target,rangeInput1)" #range1 formControlName="age">60
+                                <input type="number" min="20" max="60" (input) = "changeRange($event.target, range1)" #rangeInput1 value="20" class="agerangeinputfiled" formControlName="age">
+                              </p>
+                        </div>
+                        <div class="mb-3">
+                            <!-- <label for="exampleFormControlInput1" class="form-label">Email address</label> -->
+                            <input type="text" class="form-control"
+                                placeholder="State" formControlName="state"  value="state" required>
+                                <!-- <span class="text-danger" *ngIf="f['state'].invalid && (f['state'].dirty || f['state'].touched)">Enter State Here</span> -->
+                        </div>
+                        <div class="mb-3">
+                            <!-- <label for="exampleFormControlInput1" class="form-label">Email address</label> -->
+                            <input type="text" class="form-control"
+                                placeholder="Country" formControlName="country" value="country" required> 
+                                <!-- <span class="text-danger" *ngIf="f['country'].invalid && (f['country'].dirty || f['country'].touched)">Enter Country Here</span> -->
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Address</label>
+                            <select class="form-control" (change)="selectAddress($event.target)">
+                                <option value="" [defaultSelected]>Select Address</option>
+                                <option value="home">Home</option>
+                                <option value="company">Company</option>
+                            </select>
+                          
+                        </div>
+    
+                        <div class="home" *ngIf="addressShow">
+                            <div class="mb-3">
+                                <label  class="form-label">Address 1</label>
+                                <input type="text" class="form-control"
+                                    placeholder="address1" formControlName="address1" value="address1">
+                            </div>
+                            <div class="mb-3">
+                                <label  class="form-label">Address2</label>
+                                <input type="text" class="form-control"
+                                    placeholder="address2" formControlName="address2" value="address2">
+                            </div>
+                        </div>
+    
+    
+                        <div class="company" *ngIf="companyAddressShow">
+                            <div class="mb-3">
+                                <label  class="form-label">Company Address 1</label>
+                                <input type="text" class="form-control" 
+                                    placeholder="companyAddress1" formControlName="companyAddress1"
+                                    value="companyAddress1">
+                            </div>
+                            <div class="mb-3">
+                                <label  class="form-label">Company Address2</label>
+                                <input type="text" class="form-control" 
+                                    placeholder="companyAddress2" formControlName="companyAddress1"
+                                    value="companyAddress2">
+                            </div>
+                        </div>
+    
+    
+    
+                        <div class="mb-3">
+                            <label class="form-label">Tags</label>
+                            <input type="text" class="form-control"
+                                placeholder="tags" name="tags" #tags (input)="addTags(tags.value)" (keypress)="select($event,tags)"
+                                formControlName="tags" value="tags.name">
+
+                            <div class="show-tags">
+                                <ul *ngFor="let data of allTags; let i = index">
+                                    <li>{{data.name}} &nbsp;<i class="fa fa-close" (click)="removeTags(i)"></i></li>
+                                </ul>
+                            </div> 
+                            <div class="form-check mt-2">
+                                <input class="form-check-input" type="checkbox" value="subscribe" id="defaultCheck1" formControlName="subscribe">
+                                <label class="form-check-label" for="defaultCheck1">
+                                  subscribe to newsletter
+                                </label>
+                            </div>
+    
+                        </div>
+                    </div>
+                </div>
+               </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close">Cancel</button>
+                <button type="button" class="btn btn-primary" (click)="updatedata()">Update</button>
+            </div>
+        </div>
+    </div>
+</div>
